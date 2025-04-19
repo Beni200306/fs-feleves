@@ -8,3 +8,13 @@ h1{
     color: khaki;
     font-family: 'Courier New', Courier, monospace;
 }
+td{
+    border: 1px solid khaki;
+    color: khaki;
+}
+th{
+    border: 1px solid black;
+    color: black;
+    background-color: khaki;
+    text-align: center;
+}
