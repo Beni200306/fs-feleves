@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="">
-        <textarea name="text" class="from-control" id="text"></textarea>
-        <br>
-        <input type="submit" class="btn btn-success" value="Elküld">
-    </form>
+    <h1 class="mb-4 text-center">Szövegelemző alkalmazás</h1>
+
+    <div class="d-flex justify-content-center">
+        <textarea class="form-control" id="inputText" rows="6" cols="50" placeholder="Írd be ide a szöveget..."></textarea>
+    </div>
+    <br>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary mb-4" onclick="analyzeText()">Elemzés indítása</button>
+    </div>
+    
+
 </body>
 </html>
