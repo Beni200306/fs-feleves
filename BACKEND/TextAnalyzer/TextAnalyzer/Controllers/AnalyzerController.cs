@@ -7,8 +7,8 @@ namespace TextAnalyzer.Controllers
     [Route("[controller]")]
     public class AnalyzerController:ControllerBase
     {
-        [HttpPost]
-        public ActionResult<TextResult> Analyze([FromBody] TextInput input)
+        [HttpPost("analyze")]
+        public TextResult Analyze([FromBody] TextInput input)
         {
             TextResult re = new TextResult();
             re.WordCount = input.Text.Split(' ').Count();
@@ -16,7 +16,7 @@ namespace TextAnalyzer.Controllers
             re.AverageWordLength = re.CharacterCount / re.WordCount;
             re.AverageSentenceLength = re.WordCount / input.Text.Split('.').Count();
 
-            return Ok(re);
+            return re;
         }
     }
 }
