@@ -16,6 +16,21 @@ namespace TextAnalyzer.Controllers
             re.AverageWordLength = re.CharacterCount / re.WordCount;
             re.AverageSentenceLength = re.WordCount / input.Split('.').Count();
 
+            //eltávolítom a pontokat a mondatok végéről, hogy megkapjam a szavakat
+            string withoutDots="";
+            foreach (var item in input.ToLower())
+            {
+                if (item!='.' && item!=',' && item!=';')
+                {
+                    withoutDots += item;
+                }
+            }
+            var words = withoutDots.Split(' ').Distinct();
+            
+            
+
+
+
             return re;
         }
     }
