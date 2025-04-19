@@ -5,5 +5,6 @@ body{
     background-color: rgb(51, 59, 83);
 }
 h1{
-    color: azure;
+    color: khaki;
+    font-family: 'Courier New', Courier, monospace;
 }
