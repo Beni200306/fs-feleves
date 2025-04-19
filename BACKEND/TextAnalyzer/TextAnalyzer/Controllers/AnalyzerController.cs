@@ -16,7 +16,7 @@ namespace TextAnalyzer.Controllers
             re.AverageWordLength = re.CharacterCount / re.WordCount;
             re.AverageSentenceLength = re.WordCount / input.Split('.').Count();
 
-            //eltávolítom a pontokat a mondatok végéről, hogy megkapjam a szavakat
+            //eltávolítom a pont, vessző, pontosvesszőket a mondatok végéről, hogy megkapjam a szavakat
             string withoutDots="";
             foreach (var item in input.ToLower())
             {
@@ -25,9 +25,15 @@ namespace TextAnalyzer.Controllers
                     withoutDots += item;
                 }
             }
-            var words = withoutDots.Split(' ').Distinct();
-            
-            
+            string[] inputWordSplit = withoutDots.Split(' ');
+            var words = inputWordSplit.Distinct();
+            re.MostFrequentWords = new Dictionary<string, int>();
+            foreach (var item in words)
+            {
+                re.MostFrequentWords.Add(item, inputWordSplit.Count(x => x == item));
+            }
+
+
 
 
 
