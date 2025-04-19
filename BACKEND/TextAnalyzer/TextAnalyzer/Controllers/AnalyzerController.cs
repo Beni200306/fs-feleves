@@ -7,7 +7,7 @@ namespace TextAnalyzer.Controllers
     [Route("[controller]")]
     public class AnalyzerController:ControllerBase
     {
-        [HttpPost("analyze")]
+        [HttpPost()]
         public TextResult Analyze([FromBody] TextInput input)
         {
             TextResult re = new TextResult();

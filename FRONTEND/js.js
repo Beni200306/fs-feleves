@@ -9,16 +9,22 @@ async function analyzeText()
         },
         body: JSON.stringify({ text: inputText })
     });
-    displayStatistics(await response.json())
+    let res=await response.json()
+    console.log(res)
+    displayStatistics(res)
+    
 }
 function displayStatistics(res)
 {
     let table= document.createElement('table')
     let resultsDiv=document.querySelector('#results')
+    resultsDiv.innerHTML=""
     let tr=document.createElement('tr')
     tr.innerHTML="<th>Szavak száma</th><th>Karakterek száma</th><th>Átlagos mondat hossz</th><th>Átlagos szó hossz</th>"
     table.appendChild(tr)
     tr=document.createElement('tr')
+    tr.innerHTML=`<td>${res.wordCount}</td><td>${res.wordCount}</td><td>${res.averageSentenceLength}</td><td>${res.averageWordLength}</td>`
+    table.appendChild(tr)
     resultsDiv.appendChild(table)
 
 }
