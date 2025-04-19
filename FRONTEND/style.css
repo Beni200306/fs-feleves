@@ -8,11 +8,11 @@ h1{
     color: khaki;
     font-family: 'Courier New', Courier, monospace;
 }
-td{
+/*td{
     border: 1px solid khaki;
     color: khaki;
-}
-th{
+}*/
+th,td{
     border: 1px solid black;
     color: black;
     background-color: khaki;
