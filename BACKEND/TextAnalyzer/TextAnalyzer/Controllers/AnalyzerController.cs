@@ -8,13 +8,13 @@ namespace TextAnalyzer.Controllers
     public class AnalyzerController:ControllerBase
     {
         [HttpPost()]
-        public TextResult Analyze([FromBody] TextInput input)
+        public TextResult Analyze([FromBody] string input)
         {
             TextResult re = new TextResult();
-            re.WordCount = input.Text.Split(' ').Count();
-            re.CharacterCount = input.Text.Count();
+            re.WordCount = input.Split(' ').Count();
+            re.CharacterCount = input.Count();
             re.AverageWordLength = re.CharacterCount / re.WordCount;
-            re.AverageSentenceLength = re.WordCount / input.Text.Split('.').Count();
+            re.AverageSentenceLength = re.WordCount / input.Split('.').Count();
 
             return re;
         }
