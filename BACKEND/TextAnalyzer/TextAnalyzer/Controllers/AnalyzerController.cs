@@ -11,31 +11,32 @@ namespace TextAnalyzer.Controllers
         public TextResult Analyze([FromBody] string input)
         {
             TextResult re = new TextResult();
-            re.WordCount = input.Split(' ').Count();
-            re.CharacterCount = input.Count();
-            re.AverageWordLength = re.CharacterCount / re.WordCount;
-            re.AverageSentenceLength = re.WordCount / input.Split('.').Count();
 
             //eltávolítom a pont, vessző, pontosvesszőket a mondatok végéről, hogy megkapjam a szavakat
-            string withoutDots="";
+            string withoutDots = "";
             foreach (var item in input.ToLower())
             {
-                if (item!='.' && item!=',' && item!=';')
+                if (item != '.' && item != ',' && item != ';')
                 {
                     withoutDots += item;
                 }
             }
+
+            re.WordCount = withoutDots.Split(' ').Count();
+            re.CharacterCount = withoutDots.Count(x=>x!=' ');
+            re.AverageWordLength = re.CharacterCount / re.WordCount;
+            re.AverageSentenceLength = Math.Ceiling(Convert.ToDouble(re.WordCount) / input.Split('.').Count());
+            
+            
+
+            //íras jelek nélük a szavak tömbbe splitelve
             string[] inputWordSplit = withoutDots.Split(' ');
             var words = inputWordSplit.Distinct();
             foreach (var item in words)
             {
                 re.MostFrequentWords.Add(new WordFrequency() { Word=item, Amount=inputWordSplit.Count(x => x == item) });
             }
-            re.MostFrequentWords = re.MostFrequentWords.Where(x=>x.Amount>=3).OrderByDescending(x=>x.Amount).ToList();
-            //fix it
-            ;
-
-
+            re.MostFrequentWords = re.MostFrequentWords.OrderByDescending(x=>x.Amount).Take(5).ToList();
 
             return re;
         }

@@ -31,6 +31,7 @@ function displayStatistics(res)
     
     table= document.createElement('table')
     let wordFreq=document.querySelector('#wordFrequencyTable')
+    wordFreq.innerHTML=""
     let trWord=document.createElement('tr')
     let trFreq=document.createElement('tr')
     let thWord=document.createElement('th')
