@@ -27,13 +27,13 @@ namespace TextAnalyzer.Controllers
             }
             string[] inputWordSplit = withoutDots.Split(' ');
             var words = inputWordSplit.Distinct();
-            re.MostFrequentWords = new Dictionary<string, int>();
             foreach (var item in words)
             {
-                re.MostFrequentWords.Add(item, inputWordSplit.Count(x => x == item));
+                re.MostFrequentWords.Add(new WordFrequency() { Word=item, Amount=inputWordSplit.Count(x => x == item) });
             }
-
-
+            re.MostFrequentWords = re.MostFrequentWords.Where(x=>x.Amount>=3).ToList();
+            //fix it
+            ;
 
 
 
