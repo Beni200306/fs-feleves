@@ -31,7 +31,7 @@ namespace TextAnalyzer.Controllers
             {
                 re.MostFrequentWords.Add(new WordFrequency() { Word=item, Amount=inputWordSplit.Count(x => x == item) });
             }
-            re.MostFrequentWords = re.MostFrequentWords.Where(x=>x.Amount>=3).ToList();
+            re.MostFrequentWords = re.MostFrequentWords.Where(x=>x.Amount>=3).OrderByDescending(x=>x.Amount).ToList();
             //fix it
             ;
 

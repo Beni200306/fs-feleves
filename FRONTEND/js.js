@@ -20,11 +20,43 @@ function displayStatistics(res)
     let resultsDiv=document.querySelector('#results')
     resultsDiv.innerHTML=""
     let tr=document.createElement('tr')
-    tr.innerHTML="<th>Szavak száma</th><th>Karakterek száma</th><th>Átlagos mondat hossz</th><th>Átlagos szó hossz</th><th>Leggyakrabbi szó</th>"
+    tr.innerHTML="<th>Szavak száma</th><th>Karakterek száma</th><th>Átlagos mondat hossz</th><th>Átlagos szó hossz</th>"
     table.appendChild(tr)
     tr=document.createElement('tr')
-    tr.innerHTML=`<td>${res.wordCount}</td><td>${res.characterCount}</td><td>${res.averageSentenceLength}</td><td>${res.averageWordLength}</td><td>${res.mostFrequentWords}</td>`
+    tr.innerHTML=`<td>${res.wordCount}</td><td>${res.characterCount}</td><td>${res.averageSentenceLength}</td><td>${res.averageWordLength}</td>`
     table.appendChild(tr)
     resultsDiv.appendChild(table)
+
+
+    
+    table= document.createElement('table')
+    let wordFreq=document.querySelector('#wordFrequencyTable')
+    let trWord=document.createElement('tr')
+    let trFreq=document.createElement('tr')
+    let thWord=document.createElement('th')
+    let thFreq=document.createElement('th')
+    thWord.innerHTML="Szó"
+    thFreq.innerHTML="Előfordulás"
+    trWord.appendChild(thWord)
+    trFreq.appendChild(thFreq)
+    //<td>${res.mostFrequentWords}</td>
+    let tdWord=document.createElement('td')
+    let tdFreq=document.createElement('td')
+
+    res.mostFrequentWords.forEach(element =>
+    {
+        tdWord=document.createElement('td')
+        tdWord.innerHTML=element.word
+        tdFreq=document.createElement('td')
+        tdFreq.innerHTML=element.amount
+
+        trWord.appendChild(tdWord)
+        trFreq.appendChild(tdFreq)
+    });
+
+    table.append(trWord)
+    table.append(trFreq)
+    wordFreq.appendChild(table)
+
 
 }
