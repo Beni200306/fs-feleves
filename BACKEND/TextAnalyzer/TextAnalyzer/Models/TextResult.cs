@@ -11,5 +11,6 @@
         public List<WordFrequency> MostFrequentWords { get; set; }
         public double AverageSentenceLength { get; set; }
         public double AverageWordLength { get; set; }
+        public double ReadabilityIndex { get; set; }
     }
 }

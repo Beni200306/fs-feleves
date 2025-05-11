@@ -20,10 +20,10 @@ function displayStatistics(res)
     let resultsDiv=document.querySelector('#results')
     resultsDiv.innerHTML=""
     let tr=document.createElement('tr')
-    tr.innerHTML="<th>Szavak száma</th><th>Karakterek száma</th><th>Átlagos mondat hossz</th><th>Átlagos szó hossz</th>"
+    tr.innerHTML="<th>Szavak száma</th><th>Karakterek száma</th><th>Átlagos mondat hossz</th><th>Átlagos szó hossz</th><th>Olvashatósági index</th>"
     table.appendChild(tr)
     tr=document.createElement('tr')
-    tr.innerHTML=`<td>${res.wordCount}</td><td>${res.characterCount}</td><td>${res.averageSentenceLength}</td><td>${res.averageWordLength}</td>`
+    tr.innerHTML=`<td>${res.wordCount}</td><td>${res.characterCount}</td><td>${res.averageSentenceLength}</td><td>${res.averageWordLength}</td><td>${res.readabilityIndex}</td>`
     table.appendChild(tr)
     resultsDiv.appendChild(table)
 

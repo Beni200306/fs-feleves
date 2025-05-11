@@ -26,7 +26,7 @@ namespace TextAnalyzer.Controllers
             re.CharacterCount = withoutDots.Count(x=>x!=' ');
             re.AverageWordLength = re.CharacterCount / re.WordCount;
             re.AverageSentenceLength = Math.Ceiling(Convert.ToDouble(re.WordCount) / input.Split('.').Count());
-            
+            re.ReadabilityIndex = 100 - (re.AverageSentenceLength * 2);
             
 
             //íras jelek nélük a szavak tömbbe splitelve
