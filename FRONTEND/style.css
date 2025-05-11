@@ -14,4 +14,12 @@ th,td{
     color: black;
     background-color: khaki;
     text-align: center;
+    padding: 5px;
 }
+.bar {
+      background-color: steelblue;
+      height: 20px;
+      text-align: right;
+      color: white;
+      padding-right: 5px;
+    }

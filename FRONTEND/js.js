@@ -12,6 +12,8 @@ async function analyzeText()
     let res=await response.json()
     console.log(res)
     displayStatistics(res)
+    displayDiagram(res.mostFrequentWords)
+    
     
 }
 function displayStatistics(res)
@@ -40,7 +42,7 @@ function displayStatistics(res)
     thFreq.innerHTML="Előfordulás"
     trWord.appendChild(thWord)
     trFreq.appendChild(thFreq)
-    //<td>${res.mostFrequentWords}</td>
+    
     let tdWord=document.createElement('td')
     let tdFreq=document.createElement('td')
 
@@ -60,4 +62,35 @@ function displayStatistics(res)
     wordFreq.appendChild(table)
 
 
+}
+
+function displayDiagram(data) {
+    const targetdiv=document.getElementById('diagramTable')
+    targetdiv.innerHTML=""
+
+    console.log(data)
+
+    const table=document.createElement('table')
+    table.style.width='30%'
+    const max = Math.max(...data.map(d => d.amount)); // alapbol a map egy listat ad vissza [10,20,30] a ... csak 10,20,30 külön elemekre szedi
+
+    data.forEach(item => {
+        const tr = document.createElement('tr')
+
+        const tdName = document.createElement('td')
+        tdName.textContent = item.word;
+
+        const tdBar = document.createElement('td')
+        const bar = document.createElement('div')
+        bar.className = 'bar'
+        bar.style.width = `${(item.amount / max) * 100}%`
+        bar.textContent = item.amount
+        tdBar.appendChild(bar)
+
+        tr.appendChild(tdName)
+        tr.appendChild(tdBar)
+
+        table.appendChild(tr)
+    });
+    targetdiv.appendChild(table)
 }
